@@ -1,0 +1,36 @@
+<div>
+    <label for="mySelect">選択してください:</label>
+    <select id="mySelect" onchange="updateTextArea()">
+        <option value="">選択してください</option>
+        <option value="drill">drill</option>
+        <option value="選択肢2">選択肢2</option>
+        <option value="選択肢3">選択肢3</option>
+    </select>
+
+    <br><br>
+
+    <label for="myTextArea">選択した内容:</label>
+    <textarea id="myTextArea" rows="10" cols="50" readonly></textarea>
+</div>
+
+<script>
+    function updateTextArea() {
+        var select = document.getElementById("mySelect");
+        var textArea = document.getElementById("myTextArea");
+        textArea.value = ""; // 初期化
+
+        switch (select.value) {
+            case "drill":
+                textArea.value = "name: 名前\n description:''' 説明 '''\n type:Drill\n size: サイズを数値で記載\n tier: tierを数値で記載\n drillTime: 採掘時間を数値で記載\n requirements: [\n 	必要資材/必要数 \n ]\n category: production\n research: {\n     parent: リサーチの親\n     requirements: [\n        必要資材/必要数 \n     ]\n }\n ";
+                break;
+            case "選択肢2":
+                textArea.value = "選択肢2が選ばれました。\nこの行も追加できます。";
+                break;
+            case "選択肢3":
+                textArea.value = "選択肢3が選ばれました。\nさらに別の情報がここに。";
+                break;
+            default:
+                textArea.value = ""; // デフォルトは空
+        }
+    }
+</script>
